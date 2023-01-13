@@ -34,9 +34,7 @@ jobs:
         client-secret: ${{ secrets.PowerPlatformClientSecret }}
         tenant-id: ${{secrets.PowerPlatformTenantID}}
         solution-name: ${{ github.event.inputs.solution_name }}
-        solution-output-file: ${{
-github.event.inputs.solution_exported_folder}}/${{
-github.event.inputs.solution_name }}.zip
+        solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
     - name: export-managed-solution action
       uses: microsoft/powerplatform-actions/export-solution@v0
       with:
@@ -45,25 +43,18 @@ github.event.inputs.solution_name }}.zip
         client-secret: ${{ secrets.PowerPlatformClientSecret }}
         tenant-id: ${{secrets.PowerPlatformTenantID}}
         solution-name: ${{ github.event.inputs.solution_name }}
-        solution-output-file: ${{
-github.event.inputs.solution_exported_folder}}/${{
-github.event.inputs.solution_name }}_managed.zip
+        solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         managed: true
     - name: unpack-solution action 
       uses: microsoft/powerplatform-actions/unpack-solution@v0
       with:
-      solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{
-github.event.inputs.solution_name }}.zip
-    solution-folder: ${{ github.event.inputs.solution_folder}}/${{
-github.event.inputs.solution_name }}
-    solution-type: 'Both'
-  - name: branch-solution, prepare it for a PullRequest 
-    uses: microsoft/powerplatform-actions/branch-solution@v0
-    with:
-        solution-folder: ${{ github.event.inputs.solution_folder}}/${{
-github.event.inputs.solution_name }}
-        solution-target-folder: ${{
-github.event.inputs.solution_target_folder}}/${{
-github.event.inputs.solution_name }}
+      solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
+      solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
+      solution-type: 'Both'
+    - name: branch-solution, prepare it for a PullRequest 
+      uses: microsoft/powerplatform-actions/branch-solution@v0
+      with:
+        solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
+        solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         allow-empty-commit: true
