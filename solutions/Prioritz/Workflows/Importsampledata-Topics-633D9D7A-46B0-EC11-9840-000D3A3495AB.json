@@ -1,0 +1,235 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "contoso_sharedcommondataserviceforapps_5e308"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "fa1cd8c5-066d-430e-a97a-6d28b4d4cacc"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "Parse_JSON": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "52b1f238-155c-45c9-8a49-2f81527bfc83"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": {
+              "Topics": [
+                {
+                  "Topic": "Event banner",
+                  "Details": "Banner for the annual company event",
+                  "TopicItems": [
+                    {
+                      "Choice": "Blue background with yellow text"
+                    },
+                    {
+                      "Choice": "Yellow background with blue text"
+                    },
+                    {
+                      "Choice": "Red background with green text"
+                    }
+                  ]
+                },
+                {
+                  "Topic": "Best evening for the annual event",
+                  "Details": "The best evening to hold the company annual event",
+                  "TopicItems": [
+                    {
+                      "Choice": "Thursday evening"
+                    },
+                    {
+                      "Choice": "Friday evening"
+                    },
+                    {
+                      "Choice": "Wednesday evening"
+                    }
+                  ]
+                },
+                {
+                  "Topic": "Company event theme",
+                  "Details": "Decoration theme for the annual event",
+                  "TopicItems": [
+                    {
+                      "Choice": "Beach theme"
+                    },
+                    {
+                      "Choice": "Disco theme"
+                    },
+                    {
+                      "Choice": "Medieval theme"
+                    }
+                  ]
+                },
+                {
+                  "Topic": "Annual event raffle idea",
+                  "Details": "What should the winner of the raffle get",
+                  "TopicItems": [
+                    {
+                      "Choice": "Designated front parking space for a year"
+                    },
+                    {
+                      "Choice": "Free cafeteria lunch for a year"
+                    },
+                    {
+                      "Choice": "$30,000"
+                    }
+                  ]
+                }
+              ]
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Topics": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Topic": {
+                        "type": "string"
+                      },
+                      "Details": {
+                        "type": "string"
+                      },
+                      "TopicItems": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "Choice": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "Choice"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "Topic",
+                      "Details",
+                      "TopicItems"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Apply_to_each_topic": {
+          "foreach": "@body('Parse_JSON')?['Topics']",
+          "actions": {
+            "Add_a_new_topic": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "75520d87-a888-4339-989d-c31fa2d3abd2"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contoso_prioritztopics",
+                  "item/contoso_respondby": "@addDays(utcNow(), 5, 'MM-dd-yyyy')",
+                  "item/contoso_details": "@items('Apply_to_each_topic')?['Details']",
+                  "item/contoso_topic": "@items('Apply_to_each_topic')?['Topic']"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "Apply_to_each_topic_item": {
+              "foreach": "@items('Apply_to_each_topic')?['TopicItems']",
+              "actions": {
+                "Add_a_new_topic_item": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "8977b0aa-8f2a-413c-8950-ffcd1e236f9e"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "contoso_prioritztopicitems",
+                      "item/contoso_choice": "@items('Apply_to_each_topic_item')?['Choice']",
+                      "item/contoso_PrioritzTopic@odata.bind": "contoso_prioritztopics(@{outputs('Add_a_new_topic')?['body/contoso_prioritztopicid']})"
+                    },
+                    "authentication": {
+                      "type": "Raw",
+                      "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                    }
+                  }
+                }
+              },
+              "runAfter": {
+                "Add_a_new_topic": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "18126210-22a5-4290-8366-64bb0b3a88d1"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Parse_JSON": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f3cb29be-5587-425a-a38e-88759d095274"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

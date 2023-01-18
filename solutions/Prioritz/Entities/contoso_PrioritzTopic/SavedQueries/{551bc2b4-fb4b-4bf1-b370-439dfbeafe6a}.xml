@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{551bc2b4-fb4b-4bf1-b370-439dfbeafe6a}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="contoso_topic" select="1" icon="1" preview="1">
+        <row name="result" id="contoso_prioritztopicid">
+          <cell name="contoso_topic" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>1</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="contoso_prioritztopic">
+          <attribute name="contoso_prioritztopicid" />
+          <attribute name="contoso_topic" />
+          <attribute name="createdon" />
+          <order attribute="contoso_topic" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Prioritz Topic Advanced Find View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
