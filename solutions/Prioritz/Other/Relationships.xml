@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityRelationship Name="business_unit_contoso_prioritztopic" />
+  <EntityRelationship Name="business_unit_contoso_prioritztopicitem" />
+  <EntityRelationship Name="business_unit_contoso_prioritztopicitemranking" />
+  <EntityRelationship Name="business_unit_contoso_prioritztopicparticipant" />
+  <EntityRelationship Name="contoso_PrioritzTopic_PrioritzTopicItem" />
+  <EntityRelationship Name="contoso_PrioritzTopic_PrioritzTopicParticipant" />
+  <EntityRelationship Name="contoso_PrioritzTopicItem_Ranking" />
+  <EntityRelationship Name="contoso_PrioritzTopicItemRanking_Participant" />
+  <EntityRelationship Name="lk_contoso_prioritztopic_createdby" />
+  <EntityRelationship Name="lk_contoso_prioritztopic_modifiedby" />
+  <EntityRelationship Name="lk_contoso_prioritztopicitem_createdby" />
+  <EntityRelationship Name="lk_contoso_prioritztopicitem_modifiedby" />
+  <EntityRelationship Name="lk_contoso_prioritztopicitemranking_createdby" />
+  <EntityRelationship Name="lk_contoso_prioritztopicitemranking_modifiedby" />
+  <EntityRelationship Name="lk_contoso_prioritztopicparticipant_createdby" />
+  <EntityRelationship Name="lk_contoso_prioritztopicparticipant_modifiedby" />
+  <EntityRelationship Name="owner_contoso_prioritztopic" />
+  <EntityRelationship Name="owner_contoso_prioritztopicitem" />
+  <EntityRelationship Name="owner_contoso_prioritztopicitemranking" />
+  <EntityRelationship Name="owner_contoso_prioritztopicparticipant" />
+  <EntityRelationship Name="team_contoso_prioritztopic" />
+  <EntityRelationship Name="team_contoso_prioritztopicitem" />
+  <EntityRelationship Name="team_contoso_prioritztopicitemranking" />
+  <EntityRelationship Name="team_contoso_prioritztopicparticipant" />
+  <EntityRelationship Name="user_contoso_prioritztopic" />
+  <EntityRelationship Name="user_contoso_prioritztopicitem" />
+  <EntityRelationship Name="user_contoso_prioritztopicitemranking" />
+  <EntityRelationship Name="user_contoso_prioritztopicparticipant" />
+</EntityRelationships>

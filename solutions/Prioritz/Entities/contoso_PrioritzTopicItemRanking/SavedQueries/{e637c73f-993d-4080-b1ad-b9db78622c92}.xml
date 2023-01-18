@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{e637c73f-993d-4080-b1ad-b9db78622c92}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="contoso_choice" select="1" icon="1" preview="1">
+        <row name="result" id="contoso_prioritztopicitemrankingid">
+          <cell name="contoso_choice" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="contoso_prioritztopicitemranking">
+          <attribute name="contoso_prioritztopicitemrankingid" />
+          <attribute name="contoso_choice" />
+          <attribute name="createdon" />
+          <order attribute="contoso_choice" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Prioritz Topic Item Rankings" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>contoso_prioritzadmin_1d21e</Name>
+  <AppVersion>2023-01-12T22:52:08Z</AppVersion>
+  <Status>Ready</Status>
+  <CreatedByClientVersion>3.22122.15.0</CreatedByClientVersion>
+  <MinClientVersion>3.22122.15.0</MinClientVersion>
+  <Tags>{"primaryDeviceWidth":"1366","primaryDeviceHeight":"768","sienaVersion":"20230106T174639Z-3.22041.27.0","deviceCapabilities":"","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","publisherVersion":"3.22122.15","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false"}</Tags>
+  <IsCdsUpgraded>0</IsCdsUpgraded>
+  <GalleryItemId xsi:nil="true"></GalleryItemId>
+  <BackgroundColor>rgba(167, 2, 2, 1)</BackgroundColor>
+  <DisplayName>Prioritz Admin</DisplayName>
+  <Description xsi:nil="true"></Description>
+  <CommitMessage xsi:nil="true"></CommitMessage>
+  <Publisher></Publisher>
+  <AuthorizationReferences>[]</AuthorizationReferences>
+  <ConnectionReferences>{"9418464b-d970-4dfe-94d4-d27e36bdfb96":{"id":"/providers/microsoft.powerapps/apis/shared_prioritzsn-20connector-5fedda884d24557c3a-5f85c03c306ebc7a73","displayName":"PrioritZSN Connector","iconUri":"https://az787822.vo.msecnd.net/defaulticons/api-dedicated.png","dataSources":["PrioritZFunction"],"dependencies":[],"dependents":[],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["CreateTopic"],"isCustomApiSolutionAware":false}}</ConnectionReferences>
+  <DatabaseReferences>{"default.cds":{"databaseDetails":{"referenceType":"Environmental","environmentName":"default.cds","overrideValues":{"status":"NotSpecified"}},"dataSources":{"Prioritz Topics":{"entitySetName":"contoso_prioritztopics","logicalName":"contoso_prioritztopic"},"Prioritz Topic Items":{"entitySetName":"contoso_prioritztopicitems","logicalName":"contoso_prioritztopicitem"}}}}</DatabaseReferences>
+  <AppComponents>[]</AppComponents>
+  <AppComponentDependencies>[]</AppComponentDependencies>
+  <CanConsumeAppPass>1</CanConsumeAppPass>
+  <CanvasAppType>0</CanvasAppType>
+  <BypassConsent>0</BypassConsent>
+  <AdminControlBypassConsent>0</AdminControlBypassConsent>
+  <EmbeddedApp xsi:nil="true"></EmbeddedApp>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <CdsDependencies>{"cdsdependencies":[{"logicalname":"contoso_prioritztopic","componenttype":1},{"logicalname":"contoso_prioritztopicitem","componenttype":1}]}</CdsDependencies>
+  <IsCustomizable>1</IsCustomizable>
+  <BackgroundImageUri>/CanvasApps/contoso_prioritzadmin_1d21e_BackgroundImageUri</BackgroundImageUri>
+  <DocumentUri>/CanvasApps/contoso_prioritzadmin_1d21e_DocumentUri.msapp</DocumentUri>
+</CanvasApp>
